@@ -28,5 +28,7 @@ thiserror = "1.0"
 # feature set it is providing. clicolors-control does not implement any colorization itself.
 ansi_term = "0.11" # Synchronized with clap to prevent an extra dependency
 
-[workspace]
-members = ["demo"]
+[dev-dependencies]
+anyhow = "1.0"
+clap = "2.33"
+log = "0.4"

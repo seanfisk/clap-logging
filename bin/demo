@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
+set -o nounset
 set -o errexit
 
-cd demo
-exec cargo run -- "$@"
+exec cargo run --example demo -- "$@"
