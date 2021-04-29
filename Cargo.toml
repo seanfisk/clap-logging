@@ -1,6 +1,6 @@
 [package]
 name = "clap-logging"
-version = "0.1.0"
+version = "0.2.0"
 description = "Simple logging for command-line utilities written using Clap"
 authors = ["Sean Fisk <sean@seanfisk.com>"]
 edition = "2018"
