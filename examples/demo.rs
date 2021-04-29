@@ -28,5 +28,7 @@ fn main() -> Result<()> {
     warn!("Warn message");
     error!("Error message");
 
+    info!("Color mode: {:?}", config.color_mode());
+
     Ok(())
 }

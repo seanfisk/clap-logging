@@ -10,6 +10,7 @@ mod log;
 pub type Config = config::Config;
 pub type Error = error::Error;
 pub type Result<T> = std::result::Result<T, Error>;
+pub type ColorMode = color::Mode;
 
 const LOG_LEVEL_ARG_NAME: &str = "log-level";
 

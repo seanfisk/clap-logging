@@ -1,4 +1,5 @@
 use crate::color;
+use crate::ColorMode;
 use crate::Error;
 use atty::Stream;
 use clap::{AppSettings, ArgMatches};
@@ -6,7 +7,7 @@ use log::LevelFilter;
 use std::str::FromStr;
 
 pub struct Config {
-    pub(crate) color_mode: color::Mode,
+    pub(crate) color_mode: ColorMode,
 }
 
 impl Config {
@@ -14,13 +15,17 @@ impl Config {
         color::read_mode_from_env().map(|color_mode| Config { color_mode })
     }
 
+    pub fn color_mode(&self) -> ColorMode {
+        self.color_mode
+    }
+
     pub fn clap_settings(&self) -> Vec<AppSettings> {
         vec![
             AppSettings::ColoredHelp,
             match self.color_mode {
-                color::Mode::Never => AppSettings::ColorNever,
-                color::Mode::Always => AppSettings::ColorAlways,
-                color::Mode::Auto => AppSettings::ColorAuto,
+                ColorMode::Never => AppSettings::ColorNever,
+                ColorMode::Always => AppSettings::ColorAlways,
+                ColorMode::Auto => AppSettings::ColorAuto,
             },
         ]
     }
@@ -40,9 +45,9 @@ impl Config {
         )?;
 
         let colorize = match self.color_mode {
-            color::Mode::Never => false,
-            color::Mode::Always => true,
-            color::Mode::Auto => atty::is(Stream::Stderr),
+            ColorMode::Never => false,
+            ColorMode::Always => true,
+            ColorMode::Auto => atty::is(Stream::Stderr),
         };
 
         // Set the environment variable for any potential child processes

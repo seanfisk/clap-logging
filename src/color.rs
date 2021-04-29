@@ -1,6 +1,6 @@
 // https://users.rust-lang.org/t/should-simple-enum-derive-copy-trait/11483/2
 #[derive(Copy, Clone, Debug)]
-pub(crate) enum Mode {
+pub enum Mode {
     Never,
     Auto,
     Always,
